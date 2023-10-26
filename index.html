@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Cards</title>
+  <style>
+    .contact-card {
+        width: 30%;
+        max-width: 250px;
+        display: inline-block;
+        margin: 10px;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+    }
+
+    .contact-card img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+
+    .contact-card h3 {
+      margin: 0;
+    }
+
+    .contact-card p {
+      margin: 5px 0;
+    }
+
+    @media (max-width: 768px) {
+    .contact-card {
+        width: 48%;
+    }
+    }
+
+    @media (max-width: 480px) {
+    .contact-card {
+        width: 100%;
+    }
+    }
+  </style>
+</head>
+<body>
+  <template id="contact-card">
+    <div class="contact-card">
+      <img id="image" src="" alt="Contact Image">
+      <h3 id="name">Name</h3>
+      <p id="email">Email</p>
+      <p id="phone">Phone Number</p>
+    </div>
+  </template>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const template = document.getElementById("contact-card");
+      const cardContainer = document.getElementById("card-container");
+
+      function createContactCard(image, name, email, phone) {
+        const card = template.content.cloneNode(true);
+        card.getElementById("image").src = image;
+        card.getElementById("name").textContent = name;
+        card.getElementById("email").textContent = email;
+        card.getElementById("phone").textContent = phone;
+        cardContainer.appendChild(card);
+      }
+
+      createContactCard("https://static.wikia.nocookie.net/smesharikiarhives/images/7/77/%D0%9B%D0%BE%D1%81%D1%8F%D1%88_%D1%82%D0%BE%D0%B2%D0%B0%D1%80%D0%BD%D1%8B%D0%B9_%D0%B7%D0%BD%D0%B0%D0%BA.png/revision/latest?cb=20200929163833&path-prefix=ru", "Лосяш", "Losyash@smeshariki.ru", "+7(123)456-78-90");
+      createContactCard("https://static.wikia.nocookie.net/smesharikiarhives/images/c/c1/%D0%9A%D1%80%D0%BE%D1%88_%D0%A2%D0%97.png/revision/latest?cb=20200929162518&path-prefix=ru", "Крош", "Krosh@smeshariki.ru", "+7(987)654-32-10");
+      createContactCard("https://static.wikia.nocookie.net/smesharikiarhives/images/3/3e/%D0%91%D0%B0%D1%80%D0%B0%D1%88_%D0%A2%D0%97.png/revision/latest?cb=20200929163750&path-prefix=ru", "Бараш", "Barash@smeshariki.ru", "+7(147)258-36-90");
+      createContactCard("https://static.wikia.nocookie.net/smesharikiarhives/images/b/ba/%D0%9D%D1%8E%D1%88%D0%B0_%D0%A2%D0%97.png/revision/latest?cb=20200929163906&path-prefix=ru", "Нюша", "Nyushaa@smeshariki.ru", "+7(258)369-14-70");
+      createContactCard("https://static.wikia.nocookie.net/smesharikiarhives/images/0/0a/%D0%9A%D0%BE%D0%BF%D0%B0%D1%82%D1%8B%D1%87_%D0%A2%D0%97.png/revision/latest?cb=20200929163704&path-prefix=ru", "Копатыч", "Gigachad@smeshariki.ru", "+7(369)147-25-80");
+    });
+  </script>
+
+  <div id="card-container"></div>
+</body>
+</html>
